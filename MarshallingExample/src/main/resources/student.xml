@@ -1,0 +1,9 @@
+<User xmlns="">
+
+<id>1</id>
+
+<name>John Doe</name>
+
+<email>john.doe@example.com</email>
+
+</User>
