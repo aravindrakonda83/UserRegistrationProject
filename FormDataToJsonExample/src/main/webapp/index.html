@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form to JSON and Table</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container mt-4">
+    <h2>Form Data to JSON and Table</h2>
+    <form id="dataForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" name="age" required>
+      </div>
+      <button type="button" id="convertBtn" class="btn btn-primary">Convert to JSON</button>
+    </form>
+
+    <h3 class="mt-4">JSON Output</h3>
+    <pre id="jsonOutput"></pre>
+
+    <h3 class="mt-4">Data Table</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody id="dataTable"></tbody>
+    </table>
+  </div>
+
+  <script>
+  $(document).ready(function () {
+	  $('#convertBtn').click(function () {
+	    // Serialize form data into a JSON string
+	    const formData = $('#dataForm').serializeArray();
+	    const jsonObject = {};
+	    formData.forEach(field => {
+	      jsonObject[field.name] = field.value;
+	    });
+
+	    const jsonString = JSON.stringify(jsonObject, null, 2); // Pretty print JSON
+	    $('#jsonOutput').text(jsonString); // Display JSON string
+
+	    // Log JSON string to console
+	    console.log("Serialized JSON:", jsonString);
+
+	    // Parse JSON back to object
+	    const parsedData = JSON.parse(jsonString);
+
+	    // Log parsed data to console
+	    console.log("Parsed JSON Object:", parsedData);
+
+	    // Append data to the table
+	    const tableRow = `<tr>
+	                        <td>${parsedData.name}</td>
+	                        <td>${parsedData.email}</td>
+	                        <td>${parsedData.age}</td>
+	                      </tr>`;
+	    $('#dataTable').append(tableRow);
+	  });
+	});
+
+  </script>
+</body>
+</html>
