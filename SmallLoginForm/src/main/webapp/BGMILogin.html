@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+body {
+    background: linear-gradient(135deg, #FF7F50, #6a11cb);
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: gradientShift 20s ease infinite;
+    overflow: hidden;
+}
+
+/* Background Gradient Animation */
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(135deg, #FF7F50, #6a11cb);
+    }
+    25% {
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+    50% {
+        background: linear-gradient(135deg, #f8ff00, #3ad59f);
+    }
+    75% {
+        background: linear-gradient(135deg, #ff6a00, #ff1493);
+    }
+    100% {
+        background: linear-gradient(135deg, #FF7F50, #6a11cb);
+    }
+}
+
+/* Animated Logo Section */
+.logo {
+    position: absolute;
+    top: 10%;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: logoAnimation 2s ease-out;
+}
+
+@keyframes logoAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Floating Bubbles for Background Effect */
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    animation: bubbleAnimation 10s infinite;
+    z-index: 0;
+}
+
+.bubble:nth-child(1) {
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 20%;
+    animation-duration: 12s;
+    animation-delay: -3s;
+}
+
+.bubble:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    top: 60%;
+    left: 70%;
+    animation-duration: 15s;
+    animation-delay: -2s;
+}
+
+/* Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+    animation: formAppear 1.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes formAppear {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Form Fields */
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.6);
+}
+
+.form-control:hover {
+    border-color: #FF7F50;
+}
+
+/* Animated Placeholder */
+.form-control::placeholder {
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.form-control:focus::placeholder {
+    color: transparent;
+}
+
+/* Submit Button */
+.btn-primary {
+    background-color: #6a11cb;
+    border-color: #6a11cb;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #4e0dcb;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(78, 13, 203, 0.4);
+}
+
+/* Back Button */
+.btn-secondary {
+    background-color: #ccc;
+    border-color: #bbb;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #aaa;
+    border-color: #999;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+    }
+}
+        
+    </style>
+</head>
+<body>
+    <div class="form-container mx-auto">
+        <h1 class="text-center mb-4 text-dark">Login</h1>
+        <form id="loginForm" action="login" method="post">
+            <div class="form-group">
+                <label for="loginUsername" class="text-dark">Username:</label>
+                <input type="text" class="form-control" id="loginUsername" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword" class="text-dark">Password:</label>
+                <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="Index.html" class="btn btn-secondary btn-block">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
